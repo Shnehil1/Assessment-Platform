@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skillspeed - For The Serious Learner</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+    * {box-sizing: border-box}
+    body {font-family: "Lato", sans-serif;}
+
+    /* Style the tab */
+    div.tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #428bca;
+        width: 30%;
+        height: 300px;
+
+    }
+
+    /* Style the buttons inside the tab */
+    div.tab button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 17px 16px;
+        width: 100%;
+        border: none;
+        outline-color: #ffffff;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    div.tab button:hover {
+        background-color: #a0c5e4;
+    }
+
+    /* Create an active/current "tab button" class */
+    div.tab button.active {
+        background-color: #a0c5e4;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+        float: left;
+        padding: 0px 12px;
+        border: 1px solid #ccc;
+        width: 70%;
+        border-left: none;
+        height: 300px;
+        margin-bottom: 2.7px;
+    }
+
+    .h{
+    color: #ffffff;
+    }
+
+    .title{
+    color: #ffffff;
+    }
+
+    .h:hover{
+    color: #428bca;
+    }
+
+    .panel-footer{
+      background-color: #858585;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      text-align: center;
+    }
+
+    .container-fluid{
+    margin-top: 50px;
+    }
+
+    .btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+    }
+
+    .btn-primary.btn-outline {
+        color: #428bca;
+    }
+
+    .btn-primary.btn-outline:hover{
+    color: #ffffff;
+    }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-faded" style="background-color: #858585;">
+    <span class="navbar-text">
+        <a class="navbar-brand" href="#"><strong><font class="title">Skillspeed</font></strong></a>
+        <ul class="nav navbar-nav">
+            <li><a href="/assignment"><font class="h"><b>Home</b></font></a></li>
+            <li><a href="/assignment/past-assessments"><font class="h"><b>Assessments</b></font></a></li>
+            <li><a href="/assignment/profile"><font class="h"><b>Profile</b></font></a></li>
+            
+            <li><a href="/assignment/change-password"><font class="h"><b>Change Password</b></font></a></li>
+            <li><a href="/assignment/logout"><font class="h"><b>Logout</b></font></a></li>
+        </ul>
+    </span>
+</nav>
+
+
+<div class="container-fluid">
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')"><font class="h">Apache Spark Projects</font></button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')" id="defaultOpen"><font class="h">Big Data & Hadoop Projects</font></button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')"><font class="h">DevOps Projects</font></button>
+        <button class="tablinks" onclick="openCity(event, 'Delhi')"><font class="h">Angular Projects</font></button>
+        <button class="tablinks" onclick="openCity(event, 'Mumbai')"><font class="h">Python & Django Projects</font></button>
+        <button class="tablinks" onclick="openCity(event, 'Bangalore')"><font class="h">Data Science with R Projects</font></button>
+    </div>
+
+    <div id="London" class="tabcontent">
+        <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+         <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "Apache Spark" %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+    <div id="Paris" class="tabcontent">
+        <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+            <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "Hadoop" %}
+            &nbsp;&nbsp;&nbsp;&nbsp;<label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+    <div id="Tokyo" class="tabcontent">
+      <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+            <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "DevOps" %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+    <div id="Delhi" class="tabcontent">
+      <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+            <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "Angular" %}
+            &nbsp;&nbsp; <label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+     <div id="Mumbai" class="tabcontent">
+      <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+            <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "Python & Django" %}
+            &nbsp;&nbsp; <label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+    <div id="Bangalore" class="tabcontent">
+      <form action="/assignment/save/" onsubmit="myFunction()" method="post"> {% csrf_token %}
+            <br>
+          {% for assignment in all_assignment %}
+            {% if assignment.technology in "Python & Django" %}
+            &nbsp;&nbsp; <label class="btn btn-light"><input type="checkbox" name="checks" value="{{ assignment.id }}"/></label>
+            {{ assignment.name }}
+            {% endif %}
+          {% endfor %}
+    </div>
+
+    <script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+
+
+        <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="btn btn-primary btn-outline btn btn-lg"  value="Create Assessment" style="width: 935px;">
+            <script>
+            function myFunction() {
+            alert("THANK YOU!\nAssessment Task Has Been Created \nStudent Login Credentials will be generated within 24 Hours. \nPractical Assignments will be included in the User Profile within 48 Hours.");
+            }
+            </script>
+        </div>
+
+<div class="panel-footer">
+    <a href="https://skillspeed.com" target="_blank"><font color="#ffffff">© 2017 Blue Camphor Technologies</font></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.skillspeed.com/pages/privacy-policy" target="_blank"><font color="#ffffff">Privacy Policy</font></a></li> |
+    <a href="https://www.skillspeed.com/p/about-us" target="_blank"><font color="#ffffff">About Us</font></a></li> |
+    <a href="https://www.skillspeed.com/p/contact-us" target="_blank"><font color="#ffffff">Contact Us</font></a></li>
+</div>
+
+
+</div>
+</body>
+</html>

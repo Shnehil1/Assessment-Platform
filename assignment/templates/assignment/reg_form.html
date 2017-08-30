@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Skillspeed - For The Serious Learner</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+       .h{
+    color: #ffffff;
+    }
+
+    .title{
+    color: #ffffff;
+    }
+
+    .h:hover{
+    color: #428BCA;
+    }
+
+    .panel-footer{
+      background-color: #858585;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      text-align: center;
+    }
+
+    .container-fluid{
+    margin-top: 100px;
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-light bg-faded" style="background-color: #858585;">
+    <span class="navbar-text">
+        <a class="navbar-brand" href="#"><strong><font class="title">Skillspeed</font></strong></a>
+        <ul class="nav navbar-nav">
+            <li><a href="/assignment/login"><font class="h"><b>Login</b></font></a></li>
+            <li><a href="/assignment/register"><font class="h"><b>Register</b></font></a></li>
+        </ul>
+    </span>
+</nav>
+
+
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary" style="width: 130px;">Submit</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+<div class="panel-footer">
+    <a href="https://skillspeed.com" target="_blank"><font color="#ffffff">© 2017 Blue Camphor Technologies</font></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.skillspeed.com/pages/privacy-policy" target="_blank"><font color="#ffffff">Privacy Policy</font></a></li> |
+    <a href="https://www.skillspeed.com/p/about-us" target="_blank"><font color="#ffffff">About Us</font></a></li> |
+    <a href="https://www.skillspeed.com/p/contact-us" target="_blank"><font color="#ffffff">Contact Us</font></a></li>
+</div>
+
+
+</body>
+</html>
